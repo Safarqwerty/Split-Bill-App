@@ -25,16 +25,22 @@ const initialFriends = [
 ];
 
 export default function App() {
+  const [friends, setFriends] = useState(initialFriends);
   const [showAddFriend, setShowAddFriend] = useState(false);
 
   function handlerShowAddFriend() {
     setShowAddFriend((showAddFriend) => !showAddFriend)
   }
+
+  function handlerAddFriend(friend) {
+    setFriends((friends) => [...friends, friend])
+  }
+
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendList friends={initialFriends}/>
-        {showAddFriend && <FormAddFriend />}
+        <FriendList friends={friends}/>
+        {showAddFriend && <FormAddFriend onAddFriend={handlerAddFriend}/>}
         <button className="button" onClick={handlerShowAddFriend}>
           {showAddFriend ? "Tutup" : "Tambahkan Teman"}
         </button>
