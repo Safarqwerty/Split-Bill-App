@@ -1,25 +1,25 @@
 import { useState } from "react";
 
-export default function FormAddFriend( onAddFriend ) {
+export default function FormAddFriend( {onAddFriend} ) {
     const [name, setName] = useState("");
-    const [foto, setFoto] = useState("https://i.pravatar.cc/48");
+    const [image, setimage] = useState("https://i.pravatar.cc/48");
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        if(!name || !foto) return
+        if(!name || !image) return
 
         const id = crypto.randomUUID();
         const newFriend = {
             id,
             name,
-            foto: `${foto}?=${id}`,
+            image: `${image}?=${id}`,
             balance: 0
         }
 
         onAddFriend(newFriend)
         setName("")
-        setFoto("")
+        setimage("")
     }
 
     return (
@@ -29,12 +29,12 @@ export default function FormAddFriend( onAddFriend ) {
                 type="text" 
                 value={name} 
                 onChange={(e) => setName(e.target.value)}/>
-            <label htmlFor="">Foto</label>
+            <label htmlFor="">image</label>
 
             <input 
                 type="text" 
-                value={foto} 
-                onChange={(e) => setFoto(e.target.value)} />
+                value={image} 
+                onChange={(e) => setimage(e.target.value)} />
             <button className="button">Tambah Teman</button>
         </form>
     )
