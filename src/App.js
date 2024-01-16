@@ -38,7 +38,7 @@ export default function App() {
     setFriends((friends) => [...friends, friend])
   }
 
-  function handlerSelecteddFriend(friend) {
+  function handleSelectedFriend(friend) {
     setSelectedFriend((selected) => 
       selected?.id === friend.id ? null : friend
     )
@@ -48,13 +48,13 @@ export default function App() {
   return (
     <div className="app">
       <div className="sidebar">
-        <FriendList friends={friends} onSelected={handlerSelecteddFriend}/>
-        {showAddFriend && <FormAddFriend onAddFriend={handlerAddFriend}/>}
+        <FriendList friends={friends} onSelected={handleSelectedFriend} selectedFriend={selectedFriend} />
+        {showAddFriend && <FormAddFriend onAddFriend={handlerAddFriend} />}
         <button className="button" onClick={handlerShowAddFriend}>
           {showAddFriend ? "Tutup" : "Tambahkan Teman"}
         </button>
       </div>
-      {selectedFriend && <FormSplitBill />}
+      {selectedFriend && <FormSplitBill selectedFriend={selectedFriend} />}
     </div>
   )
 }
