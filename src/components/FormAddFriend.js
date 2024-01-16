@@ -29,7 +29,7 @@ export default function FormAddFriend( {onAddFriend} ) {
                 type="text" 
                 value={name} 
                 onChange={(e) => setName(e.target.value)}/>
-            <label htmlFor="">image</label>
+            <label htmlFor="">Foto</label>
 
             <input 
                 type="text" 
